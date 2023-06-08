@@ -119,7 +119,7 @@ customValidatorDateRevision(control: AbstractControl){
     this.formAction.get('date_revision').setValidators([Validators.required]);
   }
 
-  savePokemon(){
+  saveProduct(){
     this.submitted = true;
 
 

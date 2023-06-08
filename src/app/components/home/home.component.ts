@@ -15,10 +15,10 @@ export class HomeComponent implements OnInit {
     messageAlert:string = '';
     codeMsg:number = 200;
 
-  constructor(private pokemonService: ProductService) { }
+  constructor(private productServ: ProductService) { }
 
   ngOnInit() {
-    this.subscriptionForm = this.pokemonService.eventoFormulario.subscribe((evt:Message)=>{
+    this.subscriptionForm = this.productServ.eventoFormulario.subscribe((evt:Message)=>{
         if( evt  ){
             this.getShowAlert(evt.title,evt.code);
         }

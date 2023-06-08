@@ -37,6 +37,7 @@ div.content-listado{
                     border-bottom: 1px solid #bdbdbd; 
                     padding: 14px 5px; 
                     text-align: initial;
+                    font-size: 14px;
                     &:first-child{
                         text-align: center;
                     }
@@ -46,6 +47,7 @@ div.content-listado{
                 }
             }
             tbody{
+                font-size: 14px;
                 tr{
                     td{
                         border-bottom: 1px solid #bdbdbd;

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrlApiPokemon: 'https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/pkm-msa-evaluation/pokemon'
+  baseUrlProducts: 'https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/ipf-msa-productosfinancieros'
 };
