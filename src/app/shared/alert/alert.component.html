@@ -1,0 +1,9 @@
+<div class="content-alert">
+    <div class="alert success w-25 mt-50" [ngClass]="{'error': code > 400 }"  >
+        {{ message }}
+
+        <span class="close" (click)="closeAlert()" >
+            <i class="fas fa-times "></i>
+        </span>
+    </div>
+</div>

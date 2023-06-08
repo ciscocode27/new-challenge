@@ -1,0 +1,25 @@
+
+div.content-alert{
+    position: fixed;
+    top: 20px;
+    right: 35px;
+    z-index: 2;
+    div.alert{
+        background-color: #28a745;
+        color:white;
+        padding: 15px;
+        padding-right: 25px;
+        border-radius: 8px;
+        &.error{
+            background-color: #dc3545;
+        }
+        .close{
+            position: fixed;
+            top: 23px;
+            right: 40px;
+            color: white;
+            cursor: pointer;
+        }
+           
+    }
+}

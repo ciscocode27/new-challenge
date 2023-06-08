@@ -1,0 +1,108 @@
+div.content-form{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    div.row-form{
+        background-color: white;
+        width: 60%;
+    }
+    div.back-list{
+        background-color: #f3f3f3;
+        display: flex;
+        justify-content: flex-end;
+        button{
+            background-color: var(--color-principal-btn);
+            color: black;
+            height: 50px;
+            border: none;
+            padding: 0px 22px;
+            font-size: 15px;
+            border-radius: 4px;
+            margin: 15px 0px;
+        }
+    }
+    form{
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    div.title-form{
+        
+        padding: 20px 8px;
+        font-size: 18px;
+        display: flex;
+        justify-content: space-around;
+        border-bottom: 2px solid #8c9ca9;
+        font-weight: 600;
+        font-size: 24px;
+    }
+    div.seccion{
+        .content-section{
+            display: flex;
+            flex-direction: column;
+            width: 48%;
+            label{
+                margin-bottom: 8px;
+            }
+            .error-text{
+                margin-top: 5px;
+                margin-bottom: 0px;
+            }
+        }
+        padding-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        label{
+            margin-right: 5px;
+        }
+        .value-range{
+            text-align: center;
+        }
+        .error-text{
+            font-size: 13px;
+            color:red;
+        }
+        input.date{
+            height: 35px;
+            border: 2px solid #8c9ca9;
+            border-radius: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        input:read-only{
+            background-color: #f3f3f3;
+        }
+    }
+    div.content-btn-option{
+        margin-top: 45px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-evenly;
+        button{
+            background-color: var(--color-principal-btn);
+            color: black;
+            height: 50px;
+            width: 100px;
+            border: none;
+            padding: 0px 22px;
+            font-size: 15px;
+            border-radius: 4px;
+            margin: 0px 7px;
+            &.btn-reset{
+                background-color: #dbd6d6;
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 992px) {
+    div.content-form{
+        padding: 20px 10px;
+        div.seccion{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+    }
+}

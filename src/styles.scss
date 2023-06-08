@@ -1,0 +1,151 @@
+/* You can add global styles to this file, and also import other style files */
+:root 
+{
+--color-principal-btn: #e9dd33;
+}
+body{
+    margin: 0;
+}
+
+input.input-control[type=text]{
+    height: 35px;
+    border: 2px solid #8c9ca9;
+    border-radius: 4px;
+    padding-left: 10px;
+    &:focus-visible{
+        box-shadow: 0 0 0 0.2rem rgba(112, 116, 121, 0.25);
+        outline: none;
+    }
+    &.error{
+        border: 2px solid red;
+    }
+}
+
+button{
+    cursor: pointer;
+    &:focus{
+        box-shadow: 0 0 0 0.2rem rgba(112, 116, 121, 0.25);
+    }
+    &:disabled{
+        opacity: 0.5;
+        cursor:default;
+    }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+.tooltip .tiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    padding: 6px 0;
+    position: absolute;
+    z-index: 1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.tooltip .tiptext::after {
+    content: "";
+    position: absolute;
+    border-width: 5px;
+    border-style: solid;
+}
+.tooltip:hover .tiptext {
+    visibility: visible;
+}
+
+.tooltip.top .tiptext{
+    margin-left: -60px;
+    bottom: 150%;
+    left: 50%;
+}
+.tooltip.top .tiptext::after{
+    margin-left: -5px;
+    top: 100%;
+    left: 50%;
+    border-color: #2E2E2E transparent transparent transparent;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    margin-right: 15px;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    background-image: linear-gradient(var(--color-principal-btn), var(--color-principal-btn));
+    background-repeat: no-repeat;
+  }
+  
+  /* Input Thumb circulo*/
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--color-principal-btn);
+    cursor: ew-resize;
+    box-shadow: 0 0 2px 0 #555;
+    transition: background .3s ease-in-out;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--color-principal-btn);
+    cursor: ew-resize;
+    box-shadow: 0 0 2px 0 #555;
+    transition: background .3s ease-in-out;
+  }
+  
+  input[type="range"]::-ms-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--color-principal-btn);
+    cursor: ew-resize;
+    box-shadow: 0 0 2px 0 #555;
+    transition: background .3s ease-in-out;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb:hover {
+    background: var(--color-principal-btn);
+  }
+  
+  input[type="range"]::-moz-range-thumb:hover {
+    background: var(--color-principal-btn);
+  }
+  
+  input[type="range"]::-ms-thumb:hover {
+    background: var(--color-principal-btn);
+  }
+  
+  /* Input Track */
+  input[type=range]::-webkit-slider-runnable-track  {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+  
+  input[type=range]::-moz-range-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+  
+  input[type="range"]::-ms-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+

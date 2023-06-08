@@ -1,0 +1,15 @@
+nav.navbar{
+    background-color: white;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    div.circle{
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        margin: 0px 5px;
+        background-color: #8c9ca9;
+    }
+}

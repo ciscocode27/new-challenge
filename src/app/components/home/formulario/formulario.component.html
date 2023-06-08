@@ -1,0 +1,148 @@
+
+<div class="content-form">
+
+    
+    <div class="row-form">
+
+
+        <div class="back-list">
+            <button type="button" (click)="redirectList()" >
+                Regresar al listado
+            </button>
+        </div>
+
+        <div class="title-form">
+        
+            Formulario de {{ typeForm === listEnumTypes.Update ? 'Modificación' : 'Registro'  }}
+            
+        </div>
+        <form 
+            *ngIf="formAction"
+            id="pokemon-form"
+            autocomplete="off"
+            [formGroup]="formAction"
+            (ngSubmit)="savePokemon()">
+            <div class="seccion">
+                <div class="content-section">
+                    <label for="">ID</label>
+                    <input type="text" 
+                        class="input-control"
+                        [ngClass]="{ 'error':  ( form.id.errors  ) }"
+                        formControlName="id"
+                        name="id"
+                        [readOnly]="typeForm === listEnumTypes.Update"
+                    >
+    
+                    <ng-container *ngIf=" ( form.id.errors  ) ">
+                        <p  *ngIf="form.id.errors.required" class="error-text">ID es requerido!</p>
+                        <p  *ngIf="form.id.errors?.minlength" class="error-text">ID requiere como minimo 3 caracteres!</p>
+                        <p  *ngIf="form.id.errors?.maxlength" class="error-text">ID requiere como menos de 10 caracteres!</p>
+                    </ng-container>
+                </div>
+
+                <div class="content-section">
+                    <label for="">Nombre</label>
+                    <input type="text" 
+                        class="input-control"
+                        [ngClass]="{ 'error':  ( form.name.errors  ) }"
+                        formControlName="name"
+                        name="name"
+                    >
+    
+                    <ng-container *ngIf=" ( form.name.errors  ) ">
+                        <p  *ngIf="form.name.errors.required" class="error-text">Nombre es requerido!</p>
+                        <p  *ngIf="form.name.errors?.minlength" class="error-text">Nombre requiere como minimo 5 caracteres!</p>
+                        <p  *ngIf="form.name.errors?.maxlength" class="error-text">Nombre requiere como menos de 100 caracteres!</p>
+                    </ng-container>
+                </div>
+            </div>
+    
+            <div class="seccion">
+
+                <div class="content-section">
+                    <label for="">Descripción</label>
+                    <input type="text" 
+                        class="input-control"
+                        [ngClass]="{ 'error':  ( form.description.errors  ) }"
+                        formControlName="description"
+                        name="description"
+                    >
+    
+                    <ng-container *ngIf="( form.description.errors  ) ">
+                        <p  *ngIf="form.description.errors.required" class="error-text">Descripción es requerido!</p>
+                        <p  *ngIf="form.description.errors?.minlength" class="error-text">Descripción requiere como minimo 10 caracteres!</p>
+                        <p  *ngIf="form.description.errors?.maxlength" class="error-text">Descripción requiere como menos de 200 caracteres!</p>
+                    </ng-container>
+                </div>
+
+                <div class="content-section">
+                    <label for="">Imagen </label>
+                    <input type="text" 
+                      class="input-control" 
+                      placeholder="url"
+                      [ngClass]="{ 'error': (form?.logo?.errors  ) }"
+                      formControlName="logo"
+                      name="logo" >
+    
+                      <ng-container *ngIf="(form?.logo?.errors  ) ">
+                        <p *ngIf="form.logo.errors.required" class="error-text">El logo es requerido!</p>
+                        <p *ngIf="form.logo.errors.pattern" class="error-text">El formato del logo es incorrecto</p>
+                    </ng-container>
+    
+                    
+                </div>
+ 
+            </div>
+
+            <div class="seccion">
+                <div class="content-section">
+                    <label for="">Fecha Liberación</label>
+                    <input type="date" 
+                        class="input-control date"
+                        [ngClass]="{ 'error':  ( form.date_release.errors  ) }"
+                        formControlName="date_release"
+                        name="date_release"
+                        [min]="fechaActual"
+                        #dateRelease  
+                        (change)="updateDateRevision(dateRelease.value)"
+                        [readOnly]="typeForm === listEnumTypes.Update"
+                    >
+    
+                    <ng-container *ngIf=" ( form.date_release.errors  ) ">
+                        <p *ngIf="form.date_release.errors.required" class="error-text">Fecha Liberación es requerido!</p>
+                        <p *ngIf="form.date_release.errors.dateIsLate" class="error-text">Fecha debe ser mayor o igual a la fecha actual!</p>
+                    </ng-container>
+                </div>
+
+                <div class="content-section">
+                    <label for="">Fecha Revisión</label>
+                    <input type="date"
+                        class="input-control date"
+                        [ngClass]="{ 'error': ( form.date_revision.errors  ) }"
+                        formControlName="date_revision"
+                        name="date_revision"
+                        [readonly]="true"
+                        
+                    >
+    
+                    <ng-container *ngIf=" ( form.date_revision.errors  ) ">
+                        <p *ngIf="form.date_revision.errors.required" class="error-text">Fedcha Revisión es requerido!</p>
+                        <p *ngIf="form.date_release.errors.myCustomError" class="error-text">Fecha debe ser exactamente un año posterior a la fecha de liberación!</p>
+                    </ng-container>
+                </div>
+            </div>
+    
+            <div class="content-btn-option">
+                <button class="btn-reset" (click)="resetForm()" >
+                    Reiniciar
+                </button>
+
+                
+
+                <button class="btn-add" type="submit" [disabled]="!formAction.valid" >
+                    Enviar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
