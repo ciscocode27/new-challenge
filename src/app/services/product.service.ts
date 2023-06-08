@@ -31,11 +31,11 @@ export class ProductService {
     return this.http.delete(`${this.baseUrlProducts}/bp/products`,{headers: this.headers, params: data});
   }
 
-  createUpdateProducto(producto:Product,type:TipoAccion){
+  createUpdateProducto(producto:Product,type:TipoAccion): Observable<Product[]>{
     if( type === TipoAccion.Create ){
-        return this.http.post(`${this.baseUrlProducts}/bp/products`, producto, {headers: this.headers});
+        return this.http.post<Product[]>(`${this.baseUrlProducts}/bp/products`, producto, {headers: this.headers});
     }else{
-        return this.http.put(`${this.baseUrlProducts}/bp/products`, producto, {headers: this.headers});
+        return this.http.put<Product[]>(`${this.baseUrlProducts}/bp/products`, producto, {headers: this.headers});
     }
     
   }
