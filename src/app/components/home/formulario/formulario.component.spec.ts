@@ -5,7 +5,7 @@ import { ProductService } from "../../../services/product.service";
 import { of } from 'rxjs';
 import { Product } from '../../../interfaces/products';
 import { FormularioComponent } from "./formulario.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 
 const listProducts: Product[] = [
     {
@@ -109,6 +109,7 @@ describe('Formulario component', () => {
       it('submit form and create product', () => {
         expect(component.formAction.valid).toBeFalsy();
 
+        component.formAction.controls['id'].clearAsyncValidators();
         component.formAction.controls['id'].setValue("tarj-123");
         component.formAction.controls['name'].setValue("Tarjeta");
         component.formAction.controls['logo'].setValue("https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg");

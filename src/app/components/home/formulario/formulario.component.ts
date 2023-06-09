@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import {  TipoAccion, Product } from '../../../interfaces/products';
 import { ProductService } from '../../../services/product.service';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
@@ -46,7 +46,11 @@ export class FormularioComponent implements OnInit {
 
     this.formAction = this.formBuilder.group(
         {
-            id: ['',  [Validators.required, Validators.minLength(3), Validators.maxLength(10) ] ],
+            id: ['',  {
+              validators : [Validators.required, Validators.minLength(3), Validators.maxLength(10) ],
+              asyncValidators: [idExistsValidator(this.productServ)],
+              updateOn: 'blur'
+            }],
             name: ['',  [Validators.required, Validators.minLength(5), Validators.maxLength(100)] ],
             logo: ['', [ Validators.required, Validators.pattern(this.imagePattern) ] ],
             description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
@@ -114,6 +118,7 @@ customValidatorDateRevision(control: AbstractControl){
         date_release: product.date_release?.toString().substring(0,10),
         date_revision: product.date_revision?.toString().substring(0,10)
     });
+    this.formAction.get('id').clearAsyncValidators();
     this.formAction.get('date_release').setValidators([Validators.required]);
     this.formAction.get('date_revision').setValidators([Validators.required]);
   }
@@ -143,3 +148,14 @@ customValidatorDateRevision(control: AbstractControl){
 
 }
 
+
+export function idExistsValidator(producs: ProductService):AsyncValidatorFn  {
+  return (control: AbstractControl) => {
+      return producs.verifyExistProduct(control.value.toLowerCase())
+          .pipe(
+              map(resp => {
+                return resp ? {idExists:true} : null
+              })
+          );
+  }
+}

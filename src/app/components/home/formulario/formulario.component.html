@@ -32,11 +32,12 @@
                         name="id"
                         [readOnly]="typeForm === listEnumTypes.Update"
                     >
-    
+
                     <ng-container *ngIf=" ( form.id.errors  ) ">
                         <p  *ngIf="form.id.errors.required" class="error-text">ID es requerido!</p>
                         <p  *ngIf="form.id.errors?.minlength" class="error-text">ID requiere como minimo 3 caracteres!</p>
                         <p  *ngIf="form.id.errors?.maxlength" class="error-text">ID requiere como menos de 10 caracteres!</p>
+                        <p  *ngIf="form.id.errors?.idExists" class="error-text">El ID que intenta registrar ya existe!</p>
                     </ng-container>
                 </div>
 

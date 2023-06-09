@@ -40,6 +40,10 @@ export class ProductService {
     
   }
 
+  verifyExistProduct(idProduct:string){
+    return this.http.get(`${this.baseUrlProducts}/bp/products/verification?id=${idProduct}`,{headers: this.headers});
+  }
+
   
 
 
