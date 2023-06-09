@@ -37,7 +37,7 @@
                                     >
                                     <div class="dropdown-content">
                                         <img 
-                                            [src]="product.logo" height="200" width="300" alt="pkm"
+                                            [src]="product.altLogo" height="200" width="300" alt="pkm"
                                             (error)="onErrorImage(product)"
                                             >
                                         <div class="desc">
@@ -74,19 +74,36 @@
             <div class="content-mobile">
                 <ng-container *ngFor="let product of products;let indexProduct = index">
                     <div class="box-products">
+                        <div class="btn-acciones">
+                            <div class="btn-dropdown" >
+                                <button class="tooltip top dd-button" (click)="openOptionsMenu(indexProduct)" >
+                                    <img src="assets/button-points.png" alt="opt">
+                                </button>
+                                <div class="options"  *ngIf="product.openMenu" >
+                                    <div (click)="updateProduct(product)" >
+                                        Editar
+                                    </div>
+                                    <div (click)="deleteProduct(product)">
+                                        Eliminar
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="logo content-img">
-                            <div class="img-dropdown">
-                                <img 
-                                [src]="product.altLogo" height="60px" width="80px" alt="pkm"
-                                (error)="onErrorImage(product)"
-                                >
-                                <div class="dropdown-content">
+                            <div class="box-logo">
+                                <div class="img-dropdown">
                                     <img 
-                                        [src]="product.logo" height="200" width="300" alt="pkm"
-                                        (error)="onErrorImage(product)"
-                                        >
-                                    <div class="desc">
-                                        {{  product.name | titlecase }}
+                                    [src]="product.altLogo" height="60px" width="80px" alt="pkm"
+                                    (error)="onErrorImage(product)"
+                                    >
+                                    <div class="dropdown-content">
+                                        <img 
+                                            [src]="product.altLogo" height="200" width="300" alt="pkm"
+                                            (error)="onErrorImage(product)"
+                                            >
+                                        <div class="desc">
+                                            {{  product.name | titlecase }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

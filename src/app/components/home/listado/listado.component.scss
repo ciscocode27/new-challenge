@@ -157,13 +157,42 @@ div.content-listado{
         div.box-products{
             border: 1px solid #bdbdbd;
             padding: 15px 12px;
+            div.btn-acciones{
+                text-align: end;
+                .btn-dropdown{
+                    position: relative;
+                    button.dd-button{
+                        border:none;
+                        padding: 0px;
+                    }
+                    .options{
+                        border:1px solid #bdbdbd;
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+                        background-color: white;
+                        div{
+                            padding: 5px 8px;
+                            &:hover{
+                                background-color: #e4e2e2;
+                                cursor:pointer;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         .content-img{
+            div.box-logo{
+                display: flex;
+                justify-content: center;
+            }
             .img-dropdown {
                 display: flex;
                 justify-content: center;
                 position: relative;
+                width: 90px;
               }
               
               .dropdown-content {
