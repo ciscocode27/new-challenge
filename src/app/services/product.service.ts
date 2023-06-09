@@ -27,15 +27,15 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.baseUrlProducts}/bp/products`, {headers: this.headers} );
   }
 
-  deleteProduct(data: Pick<Product,'id'> ){
-    return this.http.delete(`${this.baseUrlProducts}/bp/products`,{headers: this.headers, params: data});
+  deleteProduct(data: Pick<Product,'id'> ): Observable<string>{
+    return this.http.delete<string>(`${this.baseUrlProducts}/bp/products`,{headers: this.headers, params: data});
   }
 
-  createUpdateProducto(producto:Product,type:TipoAccion): Observable<Product[]>{
+  createUpdateProducto(producto:Product,type:TipoAccion): Observable<Product>{
     if( type === TipoAccion.Create ){
-        return this.http.post<Product[]>(`${this.baseUrlProducts}/bp/products`, producto, {headers: this.headers});
+        return this.http.post<Product>(`${this.baseUrlProducts}/bp/products`, producto, {headers: this.headers});
     }else{
-        return this.http.put<Product[]>(`${this.baseUrlProducts}/bp/products`, producto, {headers: this.headers});
+        return this.http.put<Product>(`${this.baseUrlProducts}/bp/products`, producto, {headers: this.headers});
     }
     
   }

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import {  TipoAccion } from 'src/app/interfaces/products';
-import { ProductService } from 'src/app/services/product.service';
+import {  TipoAccion, Product } from '../../../interfaces/products';
+import { ProductService } from '../../../services/product.service';
 import { take } from 'rxjs/operators';
-import { Product } from 'src/app/interfaces/products';
 import { Router } from '@angular/router';
 
 @Component({
@@ -76,7 +75,7 @@ customValidatorDateRevision(control: AbstractControl){
       isValid =false;
     }
 
-    return isValid ? null : { 'myCustomError': 'This value is invalid' };  
+    return isValid ? null : { 'dateReleError': 'This value is invalid' };  
   }
 
   customValidatorDateRelease(control: AbstractControl){  
@@ -124,18 +123,15 @@ customValidatorDateRevision(control: AbstractControl){
 
 
     if( !this.formAction.invalid  ){
-      console.log( this.formAction.value )
        this.productServ.createUpdateProducto(this.formAction.value, this.typeForm)
           .pipe(take(1))
           .subscribe( resp=>{
-              console.log('resppp',resp)
               let typeString:string = 'creado';
               if( this.typeForm === TipoAccion.Update )  typeString = 'actualizado';
               this.message = `Producto ${typeString} exitosamente!`;
               this.productServ.eventoFormulario.emit({title: this.message , code:200});
               this.submitted = false;
           },error=>{
-              console.log(error)
               this.message = 'Ocurrió un error inesperado!';
               this.productServ.eventoFormulario.emit({title:this.message , code:400});
               this.submitted = false;

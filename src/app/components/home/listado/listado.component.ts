@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { ProductService } from '../../../services/product.service';
-import { Product, TipoAccion } from 'src/app/interfaces/products';
+import { Product, TipoAccion } from '../../../interfaces/products';
 import { Router } from '@angular/router';
 
 @Component({
@@ -51,8 +51,8 @@ export class ListadoComponent implements OnInit {
                 pr.altLogo = pr.logo;
                 return pr;
             });
-            this.auxProducts = structuredClone(this.products);
-            this.auxDataFilterSearch = structuredClone(this.auxProducts);
+            this.auxProducts = JSON.parse(JSON.stringify(this.products));
+            this.auxDataFilterSearch = JSON.parse(JSON.stringify(this.auxProducts));
             this.startPaginacion = 0;
             if( this.products.length !== 0 ){
 
@@ -80,11 +80,11 @@ export class ListadoComponent implements OnInit {
   searchByName(search:string){
       this.startPaginacion = 0;
       if( search.trim() === '' ){
-        this.auxProducts = structuredClone(this.auxDataFilterSearch);
-        this.products = structuredClone(this.auxProducts);
+        this.auxProducts = JSON.parse(JSON.stringify(this.auxDataFilterSearch));
+        this.products = JSON.parse(JSON.stringify(this.auxProducts));
       }else{
         this.auxProducts = this.auxDataFilterSearch.filter(prd => prd.name.toLowerCase().includes(search.toLowerCase().trim()) );
-        this.products = structuredClone(this.auxProducts);
+        this.products = JSON.parse(JSON.stringify(this.auxProducts));
       }
       
       if( this.products.length !== 0 ){ 
@@ -111,11 +111,10 @@ export class ListadoComponent implements OnInit {
       this.prudctService.deleteProduct(params)
           .pipe(take(1))
           .subscribe( resp=>{
-              console.log('resppp', resp)
+            console.log('resppppp',resp);
               this.prudctService.eventoFormulario.emit({title: 'Producto eliminado exitosamente!' , code:200});
               this.getAllProducts();
           },error=>{
-            console.log('errorrr', error);
             if( error.status !== 200 ){
               this.prudctService.eventoFormulario.emit({title: 'Ocurrió un error inesperado!' , code:400});
             }else{
