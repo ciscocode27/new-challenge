@@ -98,6 +98,13 @@ div.content-form{
 }
 
 @media only screen and (max-width: 992px) {
+    
+    div.seccion{
+        flex-direction:column !important;
+        div.content-section{
+            width: 100% !important;
+        }
+    }
     div.row-form{
         width: 100% !important;
         form{

@@ -24,6 +24,10 @@ div.content-listado{
         }
     }
 
+    div.content-mobile{
+        display: none;
+    }
+
     div.table-products{
         margin-top: 30px;
         background-color: white;
@@ -139,6 +143,55 @@ div.content-listado{
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    table.table-products{
+        display: none;
+    }
+    div.content-mobile{
+        display: block !important;
+
+        div.box-products{
+            border: 1px solid #bdbdbd;
+            padding: 15px 12px;
+        }
+
+        .content-img{
+            .img-dropdown {
+                display: flex;
+                justify-content: center;
+                position: relative;
+              }
+              
+              .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+              }
+              
+              .img-dropdown:hover .dropdown-content {
+                display: block;
+              }
+              
+              .desc {
+                padding: 15px;
+                text-align: center;
+              }
+        }
+
+        div.info{
+            font-size: 14px;
+            margin-top: 5px;
+            label{
+                font-weight: 600;
+            }
+        }
     }
 }
 
