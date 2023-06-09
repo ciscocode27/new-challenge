@@ -24,6 +24,10 @@ export class ListadoComponent implements OnInit {
     perPage:number = 5;
     dataPagination:number[];
     auxDataFilterSearch:Product[] = [];
+    titleDescription:string = 'Descripción del Producto.';
+    titleDataRelease:string = 'Fecha a liberar el producto para los clientes en General.';
+    titleDataRevision:string = 'Fecha de revisión del producto para cambiar Términos y Condiciones.';
+
 
     @HostListener("document:click")
     clicked() {
