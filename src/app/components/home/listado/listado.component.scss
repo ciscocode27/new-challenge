@@ -44,6 +44,9 @@ div.content-listado{
                     &:last-child{
                         text-align: center;
                     }
+                    i{
+                        color:grey;
+                    }
                 }
             }
             tbody{
@@ -81,7 +84,7 @@ div.content-listado{
                                 div{
                                     padding: 5px 8px;
                                     &:hover{
-                                        background-color: #f3f3f3;
+                                        background-color: #e4e2e2;
                                         cursor:pointer;
                                     }
                                 }

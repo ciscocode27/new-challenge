@@ -5,19 +5,21 @@ div.content-alert{
     right: 35px;
     z-index: 2;
     div.alert{
-        background-color: #28a745;
-        color:white;
-        padding: 15px;
-        padding-right: 25px;
-        border-radius: 8px;
+            background-color: #0080004f;
+            color: black;
+            padding: 15px;
+            padding-right: 25px;
+            border-radius: 8px;
+            border: 3px solid #0080004f;
         &.error{
-            background-color: #dc3545;
+            background-color: #dc35453b;
+            border: 3px solid #dc3545;
         }
         .close{
             position: fixed;
-            top: 23px;
-            right: 40px;
-            color: white;
+            top: 24px;
+            right: 45px;
+            color: black;
             cursor: pointer;
         }
            
