@@ -98,12 +98,11 @@ div.content-form{
 }
 
 @media only screen and (max-width: 992px) {
-    div.content-form{
-        padding: 20px 10px;
-        div.seccion{
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
+    div.row-form{
+        width: 100% !important;
+        form{
+            padding-left: 20px;
+            padding-right: 20px;
         }
     }
 }
