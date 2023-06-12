@@ -23,7 +23,7 @@ export class FormularioComponent implements OnInit {
 
     subscriptionUpdateCreate$: Subscription;
 
-    imagePattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+    imagePattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/;
 
   constructor(private productServ: ProductService,
               private router: Router,
@@ -73,7 +73,6 @@ customValidatorDateRevision(control: AbstractControl){
     if( dateRelease ){
       let auxDate = new Date(dateRelease);
       auxDate.setFullYear( auxDate.getFullYear()+1 );
-      console.log( auxDate?.toISOString().substring(0,10) )
       isValid = auxDate?.toISOString().substring(0,10) === control.value;
     }else{
       isValid =false;

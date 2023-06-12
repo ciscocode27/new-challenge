@@ -5,7 +5,9 @@ import { ProductService } from "../../../services/product.service";
 import { of } from 'rxjs';
 import { Product } from '../../../interfaces/products';
 import { FormularioComponent } from "./formulario.component";
-import { FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterTestingModule } from "@angular/router/testing";
+import { Router } from "@angular/router";
 
 const listProducts: Product[] = [
     {
@@ -35,6 +37,8 @@ const product: Product = {
     "date_revision": new Date("2023-03-25")
 };
 
+class ComponentTestRoute {};
+
 
 describe('Formulario component', () => {
     let component: FormularioComponent;
@@ -46,7 +50,11 @@ describe('Formulario component', () => {
             imports: [
                 HttpClientTestingModule,
                 ReactiveFormsModule,
-                FormsModule
+                FormsModule,
+                RouterTestingModule.withRoutes([
+                  {path:'main/listado', component: ComponentTestRoute},
+                  {path:'main/form', component: ComponentTestRoute}
+                ])
             ],
             declarations: [
                 FormularioComponent
@@ -126,6 +134,15 @@ describe('Formulario component', () => {
         expect(spy).toHaveBeenCalledTimes(1);
 
       });
+
+      it('should navigate listado', ()=>{
+        const router = TestBed.inject(Router);
+        
+        const spy = jest.spyOn(router, 'navigate');
+
+        component.redirectList();
+        expect(spy).toHaveBeenCalledWith(['main/listado']);
+      })
 
 
 

@@ -40,8 +40,8 @@ export class ProductService {
     
   }
 
-  verifyExistProduct(idProduct:string){
-    return this.http.get(`${this.baseUrlProducts}/bp/products/verification?id=${idProduct}`,{headers: this.headers});
+  verifyExistProduct(idProduct:string): Observable<boolean>{
+    return this.http.get<boolean>(`${this.baseUrlProducts}/bp/products/verification?id=${idProduct}`,{headers: this.headers});
   }
 
   

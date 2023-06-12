@@ -115,7 +115,6 @@ export class ListadoComponent implements OnInit {
       this.prudctService.deleteProduct(params)
           .pipe(take(1))
           .subscribe( resp=>{
-            console.log('resppppp',resp);
               this.prudctService.eventoFormulario.next({title: 'Producto eliminado exitosamente!' , code:200});
               this.getAllProducts();
           },error=>{
