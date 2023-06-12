@@ -5,6 +5,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ProductService } from "../../../services/product.service";
 import { of } from 'rxjs';
 import { Product } from '../../../interfaces/products';
+import { Router } from "@angular/router";
 
 const listProducts: Product[] = [
     {
@@ -34,6 +35,10 @@ const product: Product = {
     "date_revision": new Date("2023-03-25")
 };
 
+const routerMock = {
+    navigate(){}
+}
+
 
 describe('Listado component', () => {
     let component: ListadoComponent;
@@ -49,7 +54,10 @@ describe('Listado component', () => {
                 ListadoComponent
             ],
             providers: [
-                ProductService
+                ProductService,
+                {
+                    provide: Router, userValue: routerMock
+                }
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
         }).compileComponents();
@@ -92,5 +100,15 @@ describe('Listado component', () => {
         expect(spy2).toHaveBeenCalledTimes(1);
 
     });
+
+
+    it('should navigate form', ()=>{
+        const router = TestBed.inject(Router);
+        
+        const spy = jest.spyOn(router, 'navigate');
+
+        component.updateProduct(listProducts[0]);
+        expect(spy).toHaveBeenCalledWith(['main/form']);
+      })
 
 })
