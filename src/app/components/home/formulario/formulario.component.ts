@@ -134,11 +134,11 @@ customValidatorDateRevision(control: AbstractControl){
               let typeString:string = 'creado';
               if( this.typeForm === TipoAccion.Update )  typeString = 'actualizado';
               this.message = `Producto ${typeString} exitosamente!`;
-              this.productServ.eventoFormulario.emit({title: this.message , code:200});
+              this.productServ.eventoFormulario.next({title: this.message , code:200});
               this.submitted = false;
           },error=>{
               this.message = 'Ocurrió un error inesperado!';
-              this.productServ.eventoFormulario.emit({title:this.message , code:400});
+              this.productServ.eventoFormulario.next({title:this.message , code:400});
               this.submitted = false;
           })
     }

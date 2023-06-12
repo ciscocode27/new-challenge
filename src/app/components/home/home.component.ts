@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     if( this.subscriptionForm ) this.subscriptionForm.unsubscribe();
  }
 
- closeAlert(event){
+ closeAlert(){
     this.showAlert = false;
 }
 

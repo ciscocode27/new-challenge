@@ -67,7 +67,7 @@ export class ListadoComponent implements OnInit {
             }
             
         },()=>{
-          this.prudctService.eventoFormulario.emit({title: 'Ocurrió un error inesperado!' , code:400});
+          this.prudctService.eventoFormulario.next({title: 'Ocurrió un error inesperado!' , code:400});
         })
   }
 
@@ -116,13 +116,13 @@ export class ListadoComponent implements OnInit {
           .pipe(take(1))
           .subscribe( resp=>{
             console.log('resppppp',resp);
-              this.prudctService.eventoFormulario.emit({title: 'Producto eliminado exitosamente!' , code:200});
+              this.prudctService.eventoFormulario.next({title: 'Producto eliminado exitosamente!' , code:200});
               this.getAllProducts();
           },error=>{
             if( error.status !== 200 ){
-              this.prudctService.eventoFormulario.emit({title: 'Ocurrió un error inesperado!' , code:400});
+              this.prudctService.eventoFormulario.next({title: 'Ocurrió un error inesperado!' , code:400});
             }else{
-              this.prudctService.eventoFormulario.emit({title: 'Producto eliminado exitosamente!' , code:200});
+              this.prudctService.eventoFormulario.next({title: 'Producto eliminado exitosamente!' , code:200});
               this.getAllProducts();
             }
             

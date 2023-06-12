@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import {  Message, TipoAccion } from '../interfaces/products';
 import { Product } from '../interfaces/products';
@@ -15,7 +15,7 @@ export class ProductService {
     typeForm:TipoAccion;
     infoProductsEdit: Product;
 
-    eventoFormulario: EventEmitter<Message> = new EventEmitter();
+    eventoFormulario = new Subject<Message>();
 
   constructor(private http: HttpClient) { }
 
