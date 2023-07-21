@@ -67,6 +67,7 @@ export class ListadoComponent implements OnInit {
             }
             
         },()=>{
+          this.noData = true;
           this.prudctService.eventoFormulario.next({title: 'Ocurrió un error inesperado!' , code:400});
         })
   }
