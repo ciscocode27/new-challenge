@@ -24,7 +24,7 @@
             (ngSubmit)="saveProduct()">
             <div class="seccion">
                 <div class="content-section">
-                    <label for="">ID</label>
+                    <label for="">ID *</label>
                     <input type="text" 
                         class="input-control"
                         [ngClass]="{ 'error':  ( form.id.errors && submitted  ) || ( form.id.errors && form.id.dirty ) }"
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="content-section">
-                    <label for="">Nombre</label>
+                    <label for="">Nombre *</label>
                     <input type="text" 
                         class="input-control"
                         [ngClass]="{ 'error':  ( form.name.errors && submitted )  || ( form.name.errors && form.name.dirty ) }"
@@ -62,7 +62,7 @@
             <div class="seccion">
 
                 <div class="content-section">
-                    <label for="">Descripción</label>
+                    <label for="">Descripción *</label>
                     <input type="text" 
                         class="input-control"
                         [ngClass]="{ 'error':  ( form.description.errors && submitted  ) || ( form.description.errors && form.description.dirty )  }"
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="content-section">
-                    <label for="">Imagen </label>
+                    <label for="">Imagen *</label>
                     <input type="text" 
                       class="input-control" 
                       placeholder="url"
