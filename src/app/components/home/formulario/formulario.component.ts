@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 import {  TipoAccion, Product } from '../../../interfaces/products';
 import { ProductService } from '../../../services/product.service';
-import { map, take } from 'rxjs/operators';
+import { catchError, map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
@@ -154,6 +154,9 @@ export function idExistsValidator(producs: ProductService):AsyncValidatorFn  {
           .pipe(
               map(resp => {
                 return resp ? {idExists:true} : null
+              }),
+              catchError(err => {
+                return of({errorHttp:true});
               })
           );
   }

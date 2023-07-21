@@ -27,17 +27,18 @@
                     <label for="">ID</label>
                     <input type="text" 
                         class="input-control"
-                        [ngClass]="{ 'error':  ( form.id.errors  ) }"
+                        [ngClass]="{ 'error':  ( form.id.errors && submitted  ) || ( form.id.errors && form.id.dirty ) }"
                         formControlName="id"
                         name="id"
                         [readOnly]="typeForm === listEnumTypes.Update"
                     >
 
-                    <ng-container *ngIf=" ( form.id.errors  ) ">
+                    <ng-container *ngIf=" ( form.id.errors && submitted  ) || ( form.id.errors && form.id.dirty ) ">
                         <p  *ngIf="form.id.errors.required" class="error-text">ID es requerido!</p>
                         <p  *ngIf="form.id.errors?.minlength" class="error-text">ID requiere como minimo 3 caracteres!</p>
                         <p  *ngIf="form.id.errors?.maxlength" class="error-text">ID requiere como menos de 10 caracteres!</p>
                         <p  *ngIf="form.id.errors?.idExists" class="error-text">El ID que intenta registrar ya existe!</p>
+                        <p  *ngIf="form.id.errors?.errorHttp" class="error-text">Ocurrió un error inesperado!</p>
                     </ng-container>
                 </div>
 
@@ -45,12 +46,12 @@
                     <label for="">Nombre</label>
                     <input type="text" 
                         class="input-control"
-                        [ngClass]="{ 'error':  ( form.name.errors  ) }"
+                        [ngClass]="{ 'error':  ( form.name.errors && submitted )  || ( form.name.errors && form.name.dirty ) }"
                         formControlName="name"
                         name="name"
                     >
     
-                    <ng-container *ngIf=" ( form.name.errors  ) ">
+                    <ng-container *ngIf=" ( form.name.errors && submitted )  || ( form.name.errors && form.name.dirty ) ">
                         <p  *ngIf="form.name.errors.required" class="error-text">Nombre es requerido!</p>
                         <p  *ngIf="form.name.errors?.minlength" class="error-text">Nombre requiere como minimo 5 caracteres!</p>
                         <p  *ngIf="form.name.errors?.maxlength" class="error-text">Nombre requiere como menos de 100 caracteres!</p>
@@ -64,12 +65,12 @@
                     <label for="">Descripción</label>
                     <input type="text" 
                         class="input-control"
-                        [ngClass]="{ 'error':  ( form.description.errors  ) }"
+                        [ngClass]="{ 'error':  ( form.description.errors && submitted  ) || ( form.description.errors && form.description.dirty )  }"
                         formControlName="description"
                         name="description"
                     >
     
-                    <ng-container *ngIf="( form.description.errors  ) ">
+                    <ng-container *ngIf="( form.description.errors && submitted  ) || ( form.description.errors && form.description.dirty ) ">
                         <p  *ngIf="form.description.errors.required" class="error-text">Descripción es requerido!</p>
                         <p  *ngIf="form.description.errors?.minlength" class="error-text">Descripción requiere como minimo 10 caracteres!</p>
                         <p  *ngIf="form.description.errors?.maxlength" class="error-text">Descripción requiere como menos de 200 caracteres!</p>
@@ -81,11 +82,11 @@
                     <input type="text" 
                       class="input-control" 
                       placeholder="url"
-                      [ngClass]="{ 'error': (form?.logo?.errors  ) }"
+                      [ngClass]="{ 'error': (form?.logo?.errors && submitted  ) ||  (form?.logo?.errors && form?.logo?.dirty  ) }"
                       formControlName="logo"
                       name="logo" >
     
-                      <ng-container *ngIf="(form?.logo?.errors  ) ">
+                      <ng-container *ngIf="(form?.logo?.errors && submitted  ) ||  (form?.logo?.errors && form?.logo?.dirty  )">
                         <p *ngIf="form.logo.errors.required" class="error-text">El logo es requerido!</p>
                         <p *ngIf="form.logo.errors.pattern" class="error-text">El formato del logo es incorrecto</p>
                     </ng-container>
